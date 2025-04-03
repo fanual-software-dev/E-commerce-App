@@ -1,0 +1,68 @@
+[
+    {
+        "imgPath": "/close.svg",
+        "clothType": "Womenswear",
+        "clothName": "Timeless A-line Evening Dress",
+        "price": 1500,
+        "fit": "Ankle-length"
+    },
+
+    {
+        "imgPath": "/Shape.svg",
+        "clothType": "Womenswear",
+        "clothName": "Elegant Silk Blouse",
+        "price": 800,
+        "fit": "Regular fit"
+    },
+
+    {
+        "imgPath": "/Shape1.svg",
+        "clothType": "Womenswear",
+        "clothName": "Chic High-waisted Trousers",
+        "price": 600,
+        "fit": "Slim fit"
+    },
+
+    {
+        "imgPath": "/close.svg",
+        "clothType": "Womenswear",
+        "clothName": "Classic Wool Coat",
+        "price": 1200,
+        "fit": "Oversized" 
+    },
+
+    {
+        "imgPath": "/Shape.svg",
+        "clothType": "Womenswear",
+        "clothName": "Elegant Silk Blouse",
+        "price": 800,
+        "fit": "Regular fit"
+    },
+
+    {
+        "imgPath": "/Shape1.svg",
+        "clothType": "Womenswear",
+        "clothName": "Chic High-waisted Trousers",
+        "price": 600,
+        "fit": "Slim fit"
+    },
+
+    
+    {
+        "imgPath": "/close.svg",
+        "clothType": "Womenswear",
+        "clothName": "Chic High-waisted Trousers",
+        "price": 600,
+        "fit": "Slim fit"
+    },
+
+    
+    {
+        "imgPath": "/Shape.svg",
+        "clothType": "Womenswear",
+        "clothName": "Chic High-waisted Trousers",
+        "price": 600,
+        "fit": "Slim fit"
+    }
+    
+  ]
