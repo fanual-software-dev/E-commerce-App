@@ -15,7 +15,7 @@ interface ProductCardProps {
 const ProductCard = ({props}:{props:ProductCardProps}) => {
   return (
     <div 
-        className={`w-full p-3 border-dashed border-2 border-r-0 md:${props.key%4 === 0 ? 'border-l-0' : ''}`}
+        className={`w-full p-3 border-dashed border-2  border-[#171717] border-r-0 md:${props.key%4 === 0 ? 'border-l-0' : ''}`}
     >
         <img 
             className='w-full rounded-tl-2xl rounded-tr-2xl' 
@@ -27,9 +27,9 @@ const ProductCard = ({props}:{props:ProductCardProps}) => {
             className='w-full flex justify-between items-center mt-5'
         >
             
-            <p className='bg-[#1A1A1A] px-3 py-2 text-xs font-bold text-[#B3B3B2] rounded-3xl'>{props.clothType}</p>
+            <p className='bg-[#1A1A1A] px-3 py-2 text-xs text-[#B3B3B2] rounded-3xl'>{props.clothType}</p>
             
-            <Link href='/' className='bg-[#1A1A1A] font-bold text-[#B3B3B2] p-2 text-xs rounded-lg flex items-center gap-1'>
+            <Link href='/' className='bg-[#1A1A1A] text-[#B3B3B2] p-2 text-xs rounded-lg flex items-center gap-1'>
                 Shop Now
                 <ArrowUpRight className='text-[#B3B3B2]' size={18}/>
 
@@ -41,8 +41,8 @@ const ProductCard = ({props}:{props:ProductCardProps}) => {
 
         <div className='flex justify-between items-center mt-3'>
             
-            <p className='text-xs font-bold text-[#B3B3B2]'><span>Fit : </span> {props.fit}</p>
-            <p className='text-xs font-bold text-[#B3B3B2]'><span>Price : </span> Birr {props.price}</p>
+            <p className='text-xs  text-[#B3B3B2]'><span>Fit : </span> {props.fit}</p>
+            <p className='text-xs  text-[#B3B3B2]'><span>Price : </span> Birr {props.price}</p>
         
         </div>
     </div>

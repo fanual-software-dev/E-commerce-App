@@ -1,0 +1,66 @@
+[
+    {
+        "imgPath": "/watch.svg",
+        "clothType": "Womenswear",
+        "clothName": "Watch",
+        "price": 1500,
+        "fit": "Ankle-length"
+    },
+
+    {
+        "imgPath": "/hat.svg",
+        "clothType": "Womenswear",
+        "clothName": "Timeless Fedora",
+        "price": 800,
+        "fit": "Regular fit"
+    },
+
+    {
+        "imgPath": "/bag.svg",
+        "clothType": "Womenswear",
+        "clothName": "Night Out Glam",
+        "price": 600,
+        "fit": "Slim fit"
+    },
+
+    {
+        "imgPath": "/jewel.svg",
+        "clothType": "Womenswear",
+        "clothName": "12 Pcs Jewelries",
+        "price": 1200,
+        "fit": "Oversized" 
+    },
+
+    {
+        "imgPath": "/bag.svg",
+        "clothType": "Womenswear",
+        "clothName": "Night Out Glam",
+        "price": 1500,
+        "fit": "Ankle-length"
+    },
+
+    {
+        "imgPath": "/jewel.svg",
+        "clothType": "Womenswear",
+        "clothName": "12 Pcs Jewelries",
+        "price": 800,
+        "fit": "Regular fit"
+    },
+
+    {
+        "imgPath": "/watch.svg",
+        "clothType": "Womenswear",
+        "clothName": "Watch",
+        "price": 600,
+        "fit": "Slim fit"
+    },
+
+    {
+        "imgPath": "/hat.svg",
+        "clothType": "Womenswear",
+        "clothName": "Timeless Fedora",
+        "price": 1200,
+        "fit": "Oversized" 
+    }
+    
+  ]
