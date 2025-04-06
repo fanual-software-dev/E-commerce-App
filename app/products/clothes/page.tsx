@@ -1,9 +1,9 @@
-import Closes from '@/components/products/Closes'
+import Clothes from '@/components/products/Clothes'
 import React from 'react'
 
 const ClosesPage = () => {
   return (
-   <Closes/>
+   <Clothes/>
   )
 }
 

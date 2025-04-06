@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import ClosesData from '@/ClosesData.json'
+import accessoriesData from '@/AccessoriesData.json'
 import ProductCard from './ProductCard'
 import { ArrowUpRight } from "lucide-react";
 
@@ -14,7 +14,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
     return (
       <Link
         href={href}
-        className={`border-[1.8px] border-[#171717] border-dashed rounded-lg  text-xs px-4 py-2 ${
+        className={`border-2 border-[#171717] border-dashed rounded-lg  text-xs px-4 py-2 ${
           isActive ? "bg-[#C7BAAA] border-none text-black" : "bg-transparent text-white"
         }`}
       >
@@ -23,26 +23,27 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
     );
   }
 
-
-
-const Closes = () => {
+const Accessories = () => {
     const [priceRange,setPrinceRange] = useState<string>("10")
-    const closes = ClosesData
+    
 
   return (
-    <div className='rounded-xl p-3 md:p-5 border-dashed border-2 my-5 md:my-16'>
+    <div className='rounded-xl p-3 md:p-5 border-dashed border-[#171717] border-2 my-5 md:my-16'>
       <div className='flex flex-col gap-4'>
         <h1 className="text-xl md:text-3xl font-bold text-white">
-            Clothes Section: Your Style Starts Here.
+            Sheba Market: The Details Matter
         </h1>
-        <p className="text-gray-200 text-xs">Discover a diverse range of clothing, embracing both the latest trends and timeless pieces, right here at Sheba Market.</p>
+        <p className="text-gray-200 text-xs">Browse our diverse range of accessories to find those unique pieces that truly reflect your personal flair.</p>
       </div>
 
-      <div className='flex gap-4 mt-8'>
-        <NavLink href="/products/closes/all">All</NavLink>
-        <NavLink href='/products/closes/men'>Men's</NavLink>
-        <NavLink href='/products/closes'>Women's</NavLink>
-        <NavLink href='/products/closes/kid'>Kid's</NavLink>
+      <div className='flex flex-wrap gap-4 mt-8'>
+        <NavLink href="/products/accessories/all">All</NavLink>
+        <NavLink href='/products/accessories/jewelery'>Jewelery</NavLink>
+        <NavLink href='/products/accessories'>Bags</NavLink>
+        <NavLink href='/products/accessories/watches'>Watches</NavLink>
+        <NavLink href='/products/accessories/hats'>Hats</NavLink>
+        <NavLink href='/products/accessories/glasses'>Glasses</NavLink>
+        <NavLink href='/products/accessories/others'>Others</NavLink>
       </div>
 
       <div className='hidden md:block w-full bg-[#C2B4A3] mt-8 px-3 md:px-5 pt-3 rounded-2xl'>
@@ -131,7 +132,7 @@ const Closes = () => {
         </div>
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {closes.map((item, index) => (
+            {accessoriesData.map((item, index) => (
                 <ProductCard
                 key={index}
                 props={{
@@ -158,7 +159,7 @@ const Closes = () => {
         </div>
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {closes.map((item, index) => (
+            {accessoriesData.map((item, index) => (
                 <ProductCard
                 key={index}
                 props={{
@@ -185,7 +186,7 @@ const Closes = () => {
         </div>
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {closes.map((item, index) => (
+            {accessoriesData.map((item, index) => (
                 <ProductCard
                 key={index}
                 props={{
@@ -205,4 +206,4 @@ const Closes = () => {
   )
 }
 
-export default Closes
+export default Accessories
