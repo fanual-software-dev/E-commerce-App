@@ -26,7 +26,7 @@ const Header = () => {
             <ShoppingCart className='text-white' size={18}/>
         </Link>
 
-        <Link href='/' className='bg-[#AE9B84] hover:bg-[#c7af93] transition-all duration-300 text-[#0F0F0F]  px-6 py-2 font-bold text-xs rounded-lg'>Contact</Link>
+        <Link href='/' className='bg-[#AE9B84] hover:bg-[#c7af93] transition-all duration-300 text-[#0F0F0F]  px-6 py-2 font-bold text-xs rounded-lg'>Signup/Login</Link>
       </div>
 
       <Menu onClick={toggleMenu} className='text-white btn btn-xs btn-accent md:hidden' size={20}/>
@@ -39,13 +39,16 @@ const Header = () => {
         <Link href='/' className='w-1/2 flex items-center gap-1 bg-[#0b0b0b] hover:bg-[#111111] transition-all duration-300 border-dashed  border-gray-500 rounded-lg text-white text-xs  px-5 py-2'>
             Home
         </Link>
+
         <Link href='/' className='w-1/2 flex items-center gap-1 bg-[#0b0b0b] hover:bg-[#111111] transition-all duration-300 border-dashed  border-gray-500 rounded-lg text-white text-xs  px-5 py-2'>
             Products
         </Link>
+
         <Link href='/' className='w-1/2 flex items-center gap-1 bg-[#0b0b0b] hover:bg-[#111111] transition-all duration-300 border-dashed  border-gray-500 rounded-lg text-white text-xs  px-5 py-2'>
             <ShoppingCart className='text-white' size={16}/>
             Cart
         </Link>
+
       </div>
       
     </div>

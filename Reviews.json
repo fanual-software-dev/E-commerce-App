@@ -1,0 +1,49 @@
+[
+    {
+        "name":"Sarah Thompson",
+        "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
+        "rating":5,
+        "imgPath":"/person0.svg",
+        "location":"New York, USA"
+    },
+
+    {
+        "name":"Rajesh Patel",
+        "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
+        "rating":5,
+        "imgPath":"/person1.svg",
+        "location":"Mumbai, India"
+    },
+
+    {
+        "name":"Emily Walker",
+        "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
+        "rating":5,
+        "imgPath":"/person2.svg",
+        "location":"London, UK"
+    },
+
+    {
+        "name":"Alejandro Garcia",
+        "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
+        "rating":5,
+        "imgPath":"/person3.svg",
+        "location":"Barcelona, Spain"
+    },
+
+    {
+        "name":"Merryn Korkovich",
+        "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
+        "rating":5,
+        "imgPath":"/person4.svg",
+        "location":"Moscow, Russia"
+    },
+
+    {
+        "name":"Maria Rodriguez",
+        "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
+        "rating":5,
+        "imgPath":"/person5.svg",
+        "location":"Mexico City, Mexico"
+    }
+]
