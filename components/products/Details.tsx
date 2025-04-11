@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Ratings from './Ratings'
 import Reviews from './Reviews'
 import ReviewsData from '@/Reviews.json'
-import { ReviewsProps } from './Reviews'
 
 const Details = () => {
 
