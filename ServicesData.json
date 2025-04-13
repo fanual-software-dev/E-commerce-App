@@ -1,0 +1,37 @@
+[
+    {
+        "title":"Passionate Craftsmanship",
+        "description":"Every garment at Sheba Market is crafted with passion, reflecting our commitment to quality and innovation.",
+        "icon":"/star.svg"
+    },
+
+    {
+        "title":"Fashion Forward",
+        "description":"We're more than a brand; we're trendsetters, curating styles that empower and inspire confidence.",
+        "icon":"/avatar.svg"
+    },
+
+    {
+        "title":"Customer-Centric Approach",
+        "description":"At Sheba Market, our customers are at the heart of everything we do. Your satisfaction is our measure of success.",
+        "icon":"/shield.svg"
+    },
+
+    {
+        "title":"Global Inspiration",
+        "description":"Influenced by global trends, we bring you a diverse and dynamic collection, embodying the spirit of fashion from around the world.",
+        "icon":"/cup.svg"
+    },
+
+    {
+        "title":"Empowering Your Style",
+        "description":"Beyond clothing, Sheba Market is a lifestyle. Join us on a journey of self-expression and empowerment through fashion.",
+        "icon":"/pencil.svg"
+    },
+
+    {
+        "title":"Sustainable Practices",
+        "description":"Sheba Market is committed to sustainability, integrating eco-friendly practices into our production process.",
+        "icon":"/sun.svg"
+    }
+]

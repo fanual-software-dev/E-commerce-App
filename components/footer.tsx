@@ -2,11 +2,11 @@ import React from 'react'
 import Image from 'next/image';
 import Scroller from './Scroller';
 import Link from 'next/link';
-import { ArrowRight, Divide } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <div className='flex flex-col gap-5 p-3 md:mt-35'>
+    <div className='flex flex-col gap-5 p-3 mt-15 md:mt-35'>
       
       <Scroller/>
       
@@ -20,8 +20,8 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className='flex py-5 border-b-2 border-dashed border-[#171717] md:py-15 flex-col md:flex-row gap-10 md:gap-0 justify-between items-center'>
-        <div className='flex flex-col gap-3'>
+      <div className='px-5 lg:px-0 grid grid-cols-2 lg:grid-cols-3 gap-5 py-5 border-b-2 border-dashed border-[#171717] md:py-15 '>
+        <div className='flex px-5 md:px-0 flex-col gap-3'>
           <p className='text-white text-sm md:text-base  '>Home</p>
           <ul className='px-5 flex space-x-2 list-disc gap-5 flex-col md:flex-row text-[#676665] text-xs'>
             <li>
@@ -38,7 +38,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className='flex flex-col gap-3'>
+        <div className='flex  flex-col gap-3'>
           <p className='text-white text-sm md:text-base  '>Products</p>
           <ul className='px-5 flex space-x-2 list-disc gap-5 flex-col md:flex-row text-[#676665] text-xs'>
             <li>
@@ -56,10 +56,10 @@ const Footer = () => {
           </ul>
         </div>
         
-        <div className='relative w-4/5 md:w-auto flex flex-col gap-3'>
+        <div className='relative col-span-full lg:col-span-1 lg:w-auto my-5 lg:my-0 lg:px-5 flex flex-col gap-5 lg:gap-3'>
           <p className='text-white text-sm md:text-base text-center md:text-start  '>Subscribe to Newslettter</p>
           <input className='p-2 px-4 text-white text-xs placeholder:text-[#676665] placeholder:text-xs rounded-md bg-[#1A1A1A]' type="email" placeholder='Your Email'/>
-          <ArrowRight className='absolute right-4 bottom-2 text-[#676665] cursor-pointer' size={18}/>
+          <ArrowRight className='absolute right-6 bottom-2 text-[#676665] cursor-pointer' size={18}/>
         </div>
       
       </div>
