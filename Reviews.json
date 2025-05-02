@@ -1,49 +1,49 @@
 [
     {
-        "name":"Sarah Thompson",
+        "name":"Meron Teshome",
         "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
         "rating":5,
         "imgPath":"/person0.svg",
-        "location":"New York, USA"
+        "location":"Addis Ababa, Ethiopia"
     },
 
     {
-        "name":"Rajesh Patel",
+        "name":"Adam Kebede",
         "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
         "rating":5,
         "imgPath":"/person1.svg",
-        "location":"Mumbai, India"
+        "location":"Bahirdar, Ethiopia"
     },
 
     {
-        "name":"Emily Walker",
+        "name":"Eden Tesfaye",
         "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
         "rating":5,
         "imgPath":"/person2.svg",
-        "location":"London, UK"
+        "location":"Dessie, Ethiopia"
     },
 
     {
-        "name":"Alejandro Garcia",
+        "name":"Alebachew Abebe",
         "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
         "rating":5,
         "imgPath":"/person3.svg",
-        "location":"Barcelona, Spain"
+        "location":"Hawassa, Ethiopia"
     },
 
     {
-        "name":"Merryn Korkovich",
+        "name":"Mihret Ayana",
         "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
         "rating":5,
         "imgPath":"/person4.svg",
-        "location":"Moscow, Russia"
+        "location":"Jimma, Ethiopia"
     },
 
     {
-        "name":"Maria Rodriguez",
+        "name":"Maedot Guesh",
         "review":"The product is amazing! It exceeded my expectations and I would highly recommend it to anyone looking for quality and performance. Five stars all the way!",
         "rating":5,
         "imgPath":"/person5.svg",
-        "location":"Mexico City, Mexico"
+        "location":"Mekele, Ethiopia"
     }
 ]

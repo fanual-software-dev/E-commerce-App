@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Sun } from 'lucide-react';
 
-const items = ['TANK TOP', 'T-SHIRT', 'LONG-SLEEVE T-SHIRT', 'RAGLAN-SLEEVE T-SHIRT', 'CROP-TOP', 'V-NECK SHIRT', 'PACKOUTS', 'TRAOUSERS', 'JACKETS'];
+const items = ['TANK TOP', 'T-SHIRT', 'LONG-SLEEVE T-SHIRT', 'RAGLAN-SLEEVE T-SHIRT', 'CROP-TOP', 'V-NECK SHIRT', 'PACKOUTS', 'TROUSERS', 'JACKETS'];
 
 function Scroller() {
   const repeatedItems = [...items, ...items]; // for seamless loop

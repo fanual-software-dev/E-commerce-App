@@ -6,10 +6,20 @@ import Image from 'next/image'
 import Ratings from './Ratings'
 import Reviews from './Reviews'
 import ReviewsData from '@/Reviews.json'
+import { useCartStore } from '@/contexts/CartStore'
 
 const Details = () => {
 
   const [isLiked,seetIsLiked] = useState(false)
+  const addToCart = useCartStore( state => state.addToCart)
+  const item = {id:1,name:'Leather Coot',quantity:1,price:300,imgUrl:'/close.svg'}
+  
+  const handleSubmit = ()=>{
+    console.log('Button clicked')
+    addToCart(item)
+   
+  }
+
   return (
     <>
       <div className='rounded-xl p-3  md:p-5 md:px-0 border-dashed border-[#171717] border-2 my-5 md:my-16'>
@@ -20,10 +30,10 @@ const Details = () => {
               <Heart onClick={(e)=>seetIsLiked(!isLiked)} className={`text-white cursor-pointer ${isLiked && 'fill-red-500 stroke-red-500'} `} size={24} strokeWidth={2}/>
             </div>
             <div className='hidden md:flex py-5 md:py-0 w-full md:w-auto items-center justify-between md:justify-center gap-4'>
-                  <Link href='/' className='hidden lg:flex bg-[#1A1A1A] text-white p-2 text-xs rounded-lg items-center gap-1'>
+                  <button  onClick={handleSubmit}  className='hidden lg:flex bg-[#1A1A1A] text-white p-2 cursor-pointer text-xs rounded-lg items-center gap-1'>
                       <ShoppingCart className='text-white' size={18}/>
                       Add To Cart
-                  </Link>
+                  </button>
                   <Link href='/' className='bg-[#C2B4A3] hover:bg-[#c7af93] transition-all duration-300 text-black p-2 text-xs rounded-lg flex items-center gap-1'>
                       <Image src='/Icon.svg' width={16} height={16} alt='Shopping Icon'/>
                       Shop Now
@@ -120,10 +130,10 @@ const Details = () => {
                
               </span>
 
-              <Link href='/' className='bg-[#1A1A1A] text-white p-2 text-xs rounded-lg flex items-center gap-1'>
+              <button onClick={handleSubmit} className='bg-[#1A1A1A] text-white p-2 cursor-pointer text-xs rounded-lg flex items-center gap-1'>
                       <ShoppingCart className='text-white' size={18}/>
                       Add To Cart
-                  </Link>
+              </button>
               
             </div>
           </div>
