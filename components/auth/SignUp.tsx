@@ -5,9 +5,13 @@ import Link from 'next/link'
 import {Eye, EyeOffIcon,Mail,ShoppingCart} from 'lucide-react'
 import formSchema from '@/schemas/Form'
 import { FormSchema } from '@/schemas/Form'
+import { useRouter } from 'next/navigation'
+import { span } from 'framer-motion/client'
+
+
 
 const SignUp = () => {
-
+    const navigate = useRouter()
     const [showPassword,setShowPassword] = useState(false)
     const [formData, setFormData] = useState<FormSchema>({
         email: '',
@@ -38,6 +42,9 @@ const SignUp = () => {
             password:''
         })
 
+        setIsSubmitting(false)
+        setIsSubmitting(true)
+
         const result = formSchema.safeParse(formData)
         if (!result.success) {
             const fieldErrors = result.error.formErrors.fieldErrors
@@ -45,10 +52,14 @@ const SignUp = () => {
                 email: fieldErrors.email ? fieldErrors.email[0] : '',
                 password: fieldErrors.password ? fieldErrors.password[0] : ''
             })
+            setIsSubmitting(false)
             return
         }
 
         setIsSubmitting(true)
+        navigate.push('/verification')
+
+
     }
 
   return (
@@ -140,8 +151,8 @@ const SignUp = () => {
                     </p>
                 </div>
                 <div className='flex flex-row-reverse justify-end md:justify-between items-center gap-5'>
-                    <button onClick={(e)=>LoginUser(e)} className='text-white w-full btn rounded-full btn-warning '>
-                        Signup
+                    <button onClick={(e)=>LoginUser(e)} className='text-black text-base w-full btn rounded-full btn-warning '>
+                        {isSubmitting ? <span className='loading loading-dots loading-lg'></span> : 'Sign Up'}
                     </button>
                 </div>
 
