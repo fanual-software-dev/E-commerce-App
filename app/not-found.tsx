@@ -27,7 +27,7 @@ const NotFound = () => {
         </p>
 
         <div className='flex justify-center items-center gap-5 p-5'>
-            <button onClick={refreshPage} className='btn btn-lg btn-accent flex items-center gap-2'>
+            <button onClick={refreshPage} className='relative overflow-x-hidden btn btn-lg   flex items-center gap-2'>
                 <RefreshCcw className='font-bold' size={18}/>
                 Refresh
             </button>

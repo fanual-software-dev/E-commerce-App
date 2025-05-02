@@ -25,16 +25,16 @@ const Footer = () => {
           <p className='text-white text-sm md:text-base  '>Home</p>
           <ul className='px-5 flex space-x-2 list-disc gap-5 flex-col md:flex-row text-[#676665] text-xs'>
             <li>
-              <Link href="/">Why Us</Link>
+              <Link href="/" className='hover:text-white'>Why Us</Link>
             </li>
             <li>
-              <Link href="/">About Us</Link>
+              <Link href="/" className='hover:text-white'>About Us</Link>
             </li>
             <li>
-              <Link href="/">Testimonials</Link>
+              <Link href="/" className='hover:text-white'>Testimonials</Link>
             </li>
             <li>
-              <Link href="/">FAQs</Link>
+              <Link href="/" className='hover:text-white'>FAQs</Link>
             </li>
           </ul>
         </div>
@@ -42,16 +42,16 @@ const Footer = () => {
           <p className='text-white text-sm md:text-base  '>Products</p>
           <ul className='px-5 flex space-x-2 list-disc gap-5 flex-col md:flex-row text-[#676665] text-xs'>
             <li>
-              <Link href="/">Clothes</Link>
+              <Link href="/" className='hover:text-white'>Clothes</Link>
             </li>
             <li>
-              <Link href="/">Accessories</Link>
+              <Link href="/" className='hover:text-white'>Accessories</Link>
             </li>
             <li>
-              <Link href="/">Electronics</Link>
+              <Link href="/" className='hover:text-white'>Electronics</Link>
             </li>
             <li>
-              <Link href="/">Footwears</Link>
+              <Link href="/" className='hover:text-white'>Footwears</Link>
             </li>
           </ul>
         </div>
@@ -59,7 +59,7 @@ const Footer = () => {
         <div className='relative col-span-full lg:col-span-1 lg:w-auto my-5 lg:my-0 lg:px-5 flex flex-col gap-5 lg:gap-3'>
           <p className='text-white text-sm md:text-base text-center md:text-start  '>Subscribe to Newslettter</p>
           <input className='p-2 px-4 text-white text-xs placeholder:text-[#676665] placeholder:text-xs rounded-md bg-[#1A1A1A]' type="email" placeholder='Your Email'/>
-          <ArrowRight className='absolute right-6 bottom-2 text-[#676665] cursor-pointer' size={18}/>
+          <ArrowRight className='absolute hover:text-white right-6 bottom-2 text-[#676665] cursor-pointer' size={18}/>
         </div>
       
       </div>
