@@ -13,7 +13,7 @@ import axios from "axios";
 
 // Create a new instance of axios
 export const baseAPI = axios.create({
-    baseURL: "https://dotbackendcode-latst.onrender.com",
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
     // timeout: 5000,
     headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ baseAPI.interceptors.response.use(
       try {
         error.config.__isRetryRequest = true;
 
-        await baseAPI.post('/api/auth/refresh-token');
+        await baseAPI.post(`${process.env.NEXT_PUBLIC_API_URL} + ${process.env.NEXT_PUBLIC_REFRESH_TOKEN_URL}`);
 
         return baseAPI(error.config);
       } catch (refreshError) {
