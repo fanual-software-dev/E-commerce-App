@@ -10,7 +10,7 @@ import { useCartStore } from '@/contexts/CartStore'
 
 const Details = () => {
 
-  const [isLiked,seetIsLiked] = useState(false)
+  const [isLiked,setIsLiked] = useState(false)
   const addToCart = useCartStore( state => state.addToCart)
   const item = {id:1,name:'Leather Coot',quantity:1,price:300,imgUrl:'/close.svg'}
   
@@ -27,7 +27,7 @@ const Details = () => {
         <div className='px-5 py-3 flex flex-col justify-between items-center md:flex-row gap-5'>
             <div className='w-full md:w-3/4 flex items-center justify-between'>
               <h2 className='text-white md:text-3xl'>Elegant Evening Gown</h2>
-              <Heart onClick={(e)=>seetIsLiked(!isLiked)} className={`text-white cursor-pointer ${isLiked && 'fill-red-500 stroke-red-500'} `} size={24} strokeWidth={2}/>
+              <Heart onClick={()=>setIsLiked(!isLiked)} className={`text-white cursor-pointer ${isLiked && 'fill-red-500 stroke-red-500'} `} size={24} strokeWidth={2}/>
             </div>
             <div className='hidden md:flex py-5 md:py-0 w-full md:w-auto items-center justify-between md:justify-center gap-4'>
                   <button  onClick={handleSubmit}  className='hidden lg:flex bg-[#1A1A1A] text-white p-2 cursor-pointer text-xs rounded-lg items-center gap-1'>

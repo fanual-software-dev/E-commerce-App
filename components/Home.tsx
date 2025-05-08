@@ -206,7 +206,7 @@ const Home = () => {
                 </h1>
 
                 <p className='text-[#0F0F0F] text-xs'>
-                    Don't miss out – experience the epitome of fashion by clicking &apos;Buy Now&apos; and embrace a world of chic elegance delivered to your doorstep. Your style journey begins here.
+                    Don&apos;t miss out – experience the epitome of fashion by clicking &apos;Buy Now&apos; and embrace a world of chic elegance delivered to your doorstep. Your style journey begins here.
                 </p>
             </div>
 
