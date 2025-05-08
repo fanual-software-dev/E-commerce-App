@@ -5,9 +5,12 @@ import Link from 'next/link'
 import {Eye, EyeOffIcon,Mail,ShoppingCart} from 'lucide-react'
 import formSchema from '@/schemas/Form'
 import { FormSchema } from '@/schemas/Form'
+import { baseAPI } from '@/schemas/AxiosInstance'
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
 
+    const navigate = useRouter()
     const [showPassword,setShowPassword] = useState(false)
     const [formData, setFormData] = useState<FormSchema>({
         email: '',
@@ -51,7 +54,30 @@ const Login = () => {
             return
         }
 
-        setIsSubmitting(true)
+        const serverResponse = await baseAPI.post('/api/auth/login', formData,{
+            withCredentials:false
+        })
+        if (serverResponse.status === 200) {
+            setIsSuccess(true)
+
+            setFormData({
+                email: '',
+                password: ''
+            })
+
+            navigate.push('/home')
+            
+        } else {
+            setErrors({
+                email: 'Invalid email or password',
+                password: ''
+            })
+            setIsSubmitting(false)
+        }
+
+        console.log(serverResponse.data)
+
+        setIsSubmitting(false)
     }
 
   return (
@@ -64,10 +90,10 @@ const Login = () => {
 
        <div className='w-full sm:w-8/12 md:w-1/2 p-4 lg:p-10 flex flex-col'>
             <div className='flex items-center justify-center gap-2 mb-3'>
-                <p className='w-10 h-10 p-2 rounded-full bg-amber-300 flex items-center justify-center'>
+                {/* <p className='w-10 h-10 p-2 rounded-full bg-amber-300 flex items-center justify-center'>
                     <ShoppingCart className='' size={20}/>
-                </p>
-                <p className='font-bold text-4xl text-amber-300'>Sheba Market</p>
+                </p> */}
+                <p className='font-bold text-4xl text-amber-300'>Login</p>
             </div>
             <p className='text-gray-300 text-sm font-serif mb-7 mt-2 italic text-center'>Please login to your account</p>
             <form action="" className=' mt-2 flex flex-col gap-7'>
@@ -135,7 +161,7 @@ const Login = () => {
                     </div>
                     <p className='text-end'>
                         <Link
-                            href='/'
+                            href='/forgot-password'
                             className='text-white  text-xs underline inline-block'
                         >
                             Forgot Password?
@@ -143,7 +169,7 @@ const Login = () => {
                     </p>
                 </div>
                 <div className='flex flex-row-reverse justify-end md:justify-between items-center gap-5'>
-                    <button onClick={(e)=>LoginUser(e)} className='text-black text-base w-full btn rounded-full btn-warning '>
+                    <button onClick={(e)=>LoginUser(e)} className='text-black text-base w-full btn rounded-lg btn-warning '>
                         {isSubmitting ? <span className='loading loading-dots loading-lg'></span>  : 'Login'}
                     </button>
                 </div>

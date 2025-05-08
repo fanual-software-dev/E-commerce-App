@@ -2,6 +2,7 @@
 import React, { useMemo } from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
+import Image from 'next/image'
 import { ShoppingCart,Menu,X } from "lucide-react";
 import { useCartStore } from '@/contexts/CartStore';
 
@@ -22,7 +23,10 @@ const Header = () => {
           <Link href='/products/clothes' className='border-[#171717]  bg-[#1A1A1A] border-dashed  border rounded-lg text-white text-xs  px-4 py-2'>Products</Link>
       </div>
 
-      <p className='text-amber-300  font-bold md:text-2xl'>SHEBA MARKET</p>
+      <div className='flex items-center justify-center gap-2 mb-3'>
+        <Image src='/logo.png' width={50} height={50} alt='Logo'/>
+        <p className='font-bold text-3xl text-white'>Sheba Market</p>
+      </div>
 
       <div className='hidden sm:flex items-center gap-4'>
         <Link href='/products/cart' className={`bg-[#1A1A1A] border-dashed space-x-2 relative border-[#171717] rounded-lg text-white text-xs  px-5 py-2`}>

@@ -2,25 +2,30 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import {Eye, EyeOffIcon,Mail,ShoppingCart} from 'lucide-react'
-import formSchema from '@/schemas/Form'
-import { FormSchema } from '@/schemas/Form'
+import { Eye, EyeOffIcon,Mail,ShoppingCart,PhoneIcon,User } from 'lucide-react'
+import { RegisterSchema, RegisterSchemaType } from '@/schemas/Form'
 import { useRouter } from 'next/navigation'
-import { span } from 'framer-motion/client'
+import { baseAPI } from '@/schemas/AxiosInstance'
 
 
 
 const SignUp = () => {
     const navigate = useRouter()
     const [showPassword,setShowPassword] = useState(false)
-    const [formData, setFormData] = useState<FormSchema>({
+    const [formData, setFormData] = useState<RegisterSchemaType>({
+        firstName: '',
+        lastName: '',
         email: '',
-        password: ''
+        password: '',
+        phone: ''
     })
 
-    const [errors, setErrors] = useState<FormSchema>({
+    const [errors, setErrors] = useState<RegisterSchemaType>({
+        firstName: '',
+        lastName: '',
         email: '',
-        password: ''
+        password: '',
+        phone: ''
     })
 
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -34,30 +39,58 @@ const SignUp = () => {
         }))
     }   
     
-    const LoginUser = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const RegisterUser = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
 
         setErrors({
-            email: '', 
-            password:''
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            phone: ''
         })
 
         setIsSubmitting(false)
         setIsSubmitting(true)
 
-        const result = formSchema.safeParse(formData)
+        const result = RegisterSchema.safeParse(formData)
         if (!result.success) {
             const fieldErrors = result.error.formErrors.fieldErrors
             setErrors({
+                firstName: fieldErrors.firstName ? fieldErrors.firstName[0] : '',
+                lastName: fieldErrors.lastName ? fieldErrors.lastName[0] : '',
                 email: fieldErrors.email ? fieldErrors.email[0] : '',
-                password: fieldErrors.password ? fieldErrors.password[0] : ''
+                password: fieldErrors.password ? fieldErrors.password[0] : '',
+                phone: fieldErrors.phone ? fieldErrors.phone[0] : ''
             })
             setIsSubmitting(false)
             return
         }
 
         setIsSubmitting(true)
-        navigate.push('/verification')
+
+        const serverResponse = await baseAPI.post('/api/auth/register', formData)
+        
+        if (serverResponse.status === 201) {
+            setIsSuccess(true)
+            setIsSubmitting(false)
+            localStorage.setItem('email', formData.email)
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                phone: ''
+            })
+
+            navigate.push('/verification')
+        }
+        else {
+            setIsSuccess(false)
+            setIsSubmitting(false)
+        }
+        console.log(serverResponse.data)
+        
 
 
     }
@@ -72,14 +105,48 @@ const SignUp = () => {
 
        <div className='w-full sm:w-8/12 md:w-1/2 p-4 lg:p-10 flex flex-col'>
             <div className='flex items-center justify-center gap-2 mb-3'>
-                <p className='w-10 h-10 p-2 rounded-full bg-amber-300 flex items-center justify-center'>
+                {/* <p className='w-10 h-10 p-2 rounded-full bg-amber-300 flex items-center justify-center'>
                     <ShoppingCart className='' size={20}/>
-                </p>
-                <p className='font-bold text-4xl text-amber-300'>Sheba Market</p>
+                </p> */}
+                <p className='font-bold text-4xl text-amber-300'>Signin</p>
             </div>
             <p className='text-gray-300 text-sm font-serif mb-7 mt-2 italic text-center'>Register now and use our service</p>
             <form action="" className=' mt-2 flex flex-col gap-7'>
                 {/* <p className='text-white  text-xs  font-serif'>Enter your details below</p> */}
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                    <div className='relative mb-2 w-full flex items-center'>
+                        <input
+                            onChange={HandleChange}
+                            value={formData.firstName}
+                            name='firstName'
+                            className='text-black w-full bg-gray-200 outline-0 font-sans  shadow-accent rounded-lg p-3 text-xs placeholder:text-black placeholder:font-semibold placeholder:italic'
+                            type="text"
+                            placeholder='First name'
+                        />
+                        <User
+                            className='absolute right-3  text-black'
+                            size={16}
+                    
+                        />
+                        {errors.firstName && <p className='text-amber-500 absolute -bottom-6 text-xs'>{errors.firstName}</p>}
+                    </div>
+                    <div className='relative mb-2 w-full flex items-center'>
+                        <input
+                            onChange={HandleChange}
+                            value={formData.lastName}
+                            name='lastName'
+                            className='text-black w-full bg-gray-200 outline-0 font-sans  shadow-accent rounded-lg p-3 text-xs placeholder:text-black placeholder:font-semibold placeholder:italic'
+                            type="text"
+                            placeholder='Last name'
+                        />
+                        <User
+                            className='absolute right-3  text-black'
+                            size={16}
+                    
+                        />
+                        {errors.lastName && <p className='text-amber-500 absolute -bottom-6 text-xs'>{errors.lastName}</p>}
+                    </div>
+                </div>
                 
                 <div className='relative mb-2 w-full flex items-center'>
     
@@ -100,6 +167,27 @@ const SignUp = () => {
 
                     {errors.email && <p className='text-amber-500 absolute -bottom-6 text-xs'>{errors.email}</p>}
                 </div>
+
+                <div className='relative mb-2 w-full flex items-center'>
+    
+                    <input
+                        onChange={HandleChange}
+                        value={formData.phone}
+                        name='phone'
+                        className='text-black w-full bg-gray-200 outline-0 font-sans  shadow-accent rounded-lg p-3 text-xs placeholder:text-black placeholder:font-semibold placeholder:italic'
+                        type="phone"
+                        placeholder='Phone number'
+                    />
+
+                    <PhoneIcon 
+                        className='absolute right-3  text-black'
+                        size={16}
+                        
+                    />
+
+                    {errors.phone && <p className='text-amber-500 absolute -bottom-6 text-xs'>{errors.phone}</p>}
+                </div>
+
                 <div className='relative w-full mb-2   flex items-center'>
 
                     <input
@@ -141,17 +229,10 @@ const SignUp = () => {
 
                         <p className='text-white text-xs'>Remember Me</p>
                     </div>
-                    <p className='text-end'>
-                        <Link
-                            href='/'
-                            className='text-white  text-xs underline inline-block'
-                        >
-                            Forgot Password?
-                        </Link>
-                    </p>
+                   
                 </div>
                 <div className='flex flex-row-reverse justify-end md:justify-between items-center gap-5'>
-                    <button onClick={(e)=>LoginUser(e)} className='text-black text-base w-full btn rounded-full btn-warning '>
+                    <button onClick={(e)=>RegisterUser(e)} className='text-black text-base w-full btn rounded-lg btn-warning '>
                         {isSubmitting ? <span className='loading loading-dots loading-lg'></span> : 'Sign Up'}
                     </button>
                 </div>
