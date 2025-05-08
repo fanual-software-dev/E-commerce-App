@@ -1,9 +1,37 @@
 'use client'
-import React from 'react'
+import React, { use, useEffect } from 'react'
+import Link from 'next/link'
 import verificationNumSchema from '@/schemas/VerificationNum'
 import { VerificationNumSchema } from '@/schemas/VerificationNum'
+import { baseAPI } from '@/schemas/AxiosInstance'
+import { useRouter } from 'next/navigation'
 
 const Verification = () => {
+
+    const naivgate = useRouter()
+
+    const [timeLeft,setTimeLeft] = React.useState<number>(60*10)
+
+
+    useEffect(()=>{
+        const interval = setInterval(() => {
+            if (timeLeft > 0) {
+                setTimeLeft((prev) => prev - 1)
+
+            } else {
+                clearInterval(interval)
+            }
+        }, 1000)
+
+        return () => clearInterval(interval)    
+    },[])
+
+    const formatTime = (seconds:number) => {
+        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const secs = (seconds % 60).toString().padStart(2, '0');
+        return `${mins}:${secs}`;
+      };
+    
     const [verifcationNumbers, setVerifcationNumbers] = React.useState<Record<string, string|number>>({
         one: '',
         two: '',
@@ -14,7 +42,6 @@ const Verification = () => {
     })
 
     const numArray = ['one','two','three','four','five','six']
-
 
     const [errors, setErrors] = React.useState<VerificationNumSchema>({
         verificationNum: ''
@@ -48,6 +75,7 @@ const Verification = () => {
 
         setIsSubmitting(false)
         setIsSubmitting(true)
+        const email = localStorage.getItem('email')
         const verificationNum = Object.values(verifcationNumbers).join('')
         const result = verificationNumSchema.safeParse({ verificationNum })
 
@@ -60,11 +88,29 @@ const Verification = () => {
             return
         }
 
+        const serverResponse = await baseAPI.post('/api/auth/verify-otp', { otp:verificationNum,email })
+
+        if (serverResponse.status === 200) {
+            setIsSuccess(true)
+            setIsSubmitting(false)
+            const timeOutID = setTimeout(() => {
+                setIsSuccess(false)
+            }, 3000)
+
+            naivgate.push('/home')
+
+
+
+            return () => clearTimeout(timeOutID)
+        } else {
+            setErrors({
+                verificationNum: 'Invalid verification code'
+            })
+            setIsSubmitting(false)
+        }
+
         
     }
-
-
-
 
 
   return (
@@ -85,18 +131,20 @@ const Verification = () => {
                     value={verifcationNumbers[item]}
                     onChange={HandleChange} 
                     maxLength={1} 
-                    className='bg-gray-200 sm:w-15 sm:h-12  border-none rounded-lg text-black text-center sm:text-2xl font-semibold p-2  sm:px-2 sm:py-3'
+                    className='bg-gray-200 sm:w-15 sm:h-12  border-none rounded-md text-black text-center sm:text-2xl font-semibold p-2  sm:px-2 sm:py-3'
                 />
             ))}          
           
         </div>
         {errors.verificationNum && <span className='text-amber-500 -mt-6  text-xs'>{errors.verificationNum}</span>}
+
+        {timeLeft > 0 ? <span className='text-white'>{formatTime(timeLeft)}</span> : <Link href='/' className='text-white text-sm underline'>Resend code?</Link>}
         
         <button
             onClick={HandleSubmit}
             // disabled={isSubmitting}
             type="submit" 
-            className='btn text-base  rounded-full w-full sm:w-1/2 btn-warning text-black mt-3 font-bold'
+            className='btn text-base  rounded-lg w-full sm:w-1/2 btn-warning text-black mt-3 font-bold'
             >
                 {isSubmitting ? <span className='loading loading-dots loading-lg'></span> : 'Verify'}
         </button>

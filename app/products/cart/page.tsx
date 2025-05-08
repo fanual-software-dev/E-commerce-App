@@ -22,7 +22,7 @@ const Cartpage = () => {
     { cartItems.length>0 ? <div className='mt-10 md:mt-0 flex flex-col gap-16 md:gap-0 md:flex-row justify-between items-start'>
         
         <div className=' md:w-3/5'>
-          <div className='w-full grid grid-cols-6 bg-[#000000]  shadow-md shadow-[#1b1b1b] p-5 gap-5 mt-10'>
+          <div className='w-full hidden md:grid md:grid-cols-6 bg-[#000000]  shadow-md shadow-[#1b1b1b] p-5 gap-5 mt-10'>
             <h1 className='text-white text-xs'>Product</h1>
             <h1 className='text-white text-xs'>Name</h1>
             <h1 className='text-white text-xs'>Price</h1>
