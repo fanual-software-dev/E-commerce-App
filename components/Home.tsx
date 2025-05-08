@@ -33,11 +33,11 @@ const Home = () => {
             </div>
             <div className='flex  md:justify-center flex-wrap md:flex-nowrap gap-4 mt-8'>
                 <NavLink href="/products/clothes/all">All</NavLink>
-                <NavLink href='/products/clothes/men'>Men's</NavLink>
-                <NavLink href='/products/clothes'>Women's</NavLink>
-                <NavLink href='/products/clothes/kid'>Kid's</NavLink>
-                <NavLink href='/products/clothes/kid'>Men's Footwear</NavLink>
-                <NavLink href='/products/clothes/kid'>Women's Footwear</NavLink>
+                <NavLink href='/products/clothes/men'>Men&apos;s</NavLink>
+                <NavLink href='/products/clothes'>Women&apos;s</NavLink>
+                <NavLink href='/products/clothes/kid'>Kid&apos;s</NavLink>
+                <NavLink href='/products/clothes/kid'>Men&apos;s Footwear</NavLink>
+                <NavLink href='/products/clothes/kid'>Women&apos;s Footwear</NavLink>
                 <NavLink href='/products/clothes/kid'>Accessories</NavLink>
                 <NavLink href='/products/clothes/kid'>Electronics</NavLink>
             </div>
@@ -68,7 +68,7 @@ const Home = () => {
                 </span>
 
                 <span className='text-xs text-[#676665]'>
-                    At Sheba Market, we've designed a straightforward shopping experience to make fashion accessible.
+                    At Sheba Market, we&apos;ve designed a straightforward shopping experience to make fashion accessible.
                 </span>
             </p>
             <div className='grid items-stretch grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  mt-8'>
@@ -181,7 +181,7 @@ const Home = () => {
                         How can I track my order?
                     </h1>
                     <p className='text-xs text-[#676665]'>
-                        Once your order is dispatched, you'll receive a tracking number via email. Use this number to track your package in real-time on our website.
+                        Once your order is dispatched, you&apos;ll receive a tracking number via email. Use this number to track your package in real-time on our website.
                     </p>
                 </div>
 
@@ -191,7 +191,7 @@ const Home = () => {
                         Do you offer exchanges for products?
                     </h1>
                     <p className='text-xs text-[#676665]'>
-                        At this time, we don't offer direct product exchanges. If you'd like a different item, please initiate a return and place a new order.
+                        At this time, we don&apos;t offer direct product exchanges. If you&apos;d like a different item, please initiate a return and place a new order.
                     </p>
                 </div>
             
@@ -206,7 +206,7 @@ const Home = () => {
                 </h1>
 
                 <p className='text-[#0F0F0F] text-xs'>
-                    Don't miss out – experience the epitome of fashion by clicking 'Buy Now' and embrace a world of chic elegance delivered to your doorstep. Your style journey begins here.
+                    Don't miss out – experience the epitome of fashion by clicking &apos;Buy Now&apos; and embrace a world of chic elegance delivered to your doorstep. Your style journey begins here.
                 </p>
             </div>
 

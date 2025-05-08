@@ -18,7 +18,7 @@ const ForgotPassword = () => {
     })
 
     const [isSubmitting, setIsSubmitting] = React.useState(false)
-    const [isSuccess, setIsSuccess] = React.useState(false)
+    // const [isSuccess, setIsSuccess] = React.useState(false)
 
        const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
         const serverResponse = await baseAPI.post('/api/auth/forgot-password-request', { email })
         if (serverResponse.status === 200) {
             
-            setIsSuccess(true)
+            // setIsSuccess(true)
             
             setEmail({
                 email: ''
@@ -82,7 +82,7 @@ const ForgotPassword = () => {
       <form action="" className='md:w-3/4 lg:w-1/2 flex p-5 lg:p-10 flex-col  gap-3'>
         
         <p className='text-white text-center text-2xl font-bold mb-5'>Forgot Password?</p>
-        <p className='text-[#676665]  text-center -mt-6 text-sm'>No worries we'll send you reset instructions</p>
+        <p className='text-[#676665]  text-center -mt-6 text-sm'>No worries we&apos;ll send you reset instructions</p>
         <label htmlFor="" className='text-white text-start'>Email</label>
         <input
             onChange={HandleChange}

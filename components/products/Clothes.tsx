@@ -40,9 +40,9 @@ const Clothes = () => {
 
       <div className='flex gap-4 mt-8'>
         <NavLink href="/products/clothes/all">All</NavLink>
-        <NavLink href='/products/clothes/men'>Men's</NavLink>
-        <NavLink href='/products/clothes'>Women's</NavLink>
-        <NavLink href='/products/clothes/kid'>Kid's</NavLink>
+        <NavLink href='/products/clothes/men'>Men&apos;s</NavLink>
+        <NavLink href='/products/clothes'>Women&apos;s</NavLink>
+        <NavLink href='/products/clothes/kid'>Kid&apos;s</NavLink>
       </div>
 
       <div className='hidden md:block w-full bg-[#C2B4A3] mt-8 px-3 md:px-5 pt-3 rounded-2xl'>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from "lucide-react";
 
 
@@ -17,10 +18,12 @@ const ProductCard = ({props}:{props:ProductCardProps}) => {
     <div 
         className={`w-full p-3 border-dashed border-2  border-[#171717] border-r-0 md:${props.key%4 === 0 ? 'border-l-0' : ''}`}
     >
-        <img 
+        <Image 
             className='w-full rounded-tl-2xl rounded-tr-2xl' 
             src={props.imgPath} 
             alt="Product Image" 
+            width={300}
+            height={300}
         />
 
         <div 
