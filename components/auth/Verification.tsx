@@ -1,5 +1,5 @@
 'use client'
-import React, { use, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import verificationNumSchema from '@/schemas/VerificationNum'
 import { VerificationNumSchema } from '@/schemas/VerificationNum'
@@ -24,7 +24,7 @@ const Verification = () => {
         }, 1000)
 
         return () => clearInterval(interval)    
-    },[])
+    },[timeLeft])
 
     const formatTime = (seconds:number) => {
         const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -48,7 +48,7 @@ const Verification = () => {
     })
 
     const [isSubmitting, setIsSubmitting] = React.useState(false)
-    const [isSuccess, setIsSuccess] = React.useState(false)
+    // const [isSuccess, setIsSuccess] = React.useState(false)
 
     const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value,id } = e.target
@@ -91,17 +91,17 @@ const Verification = () => {
         const serverResponse = await baseAPI.post('/api/auth/verify-otp', { otp:verificationNum,email })
 
         if (serverResponse.status === 200) {
-            setIsSuccess(true)
+            // setIsSuccess(true)
             setIsSubmitting(false)
-            const timeOutID = setTimeout(() => {
-                setIsSuccess(false)
-            }, 3000)
+            // const timeOutID = setTimeout(() => {
+            //     setIsSuccess(false)
+            // }, 3000)
 
             naivgate.push('/home')
 
 
 
-            return () => clearTimeout(timeOutID)
+            return 
         } else {
             setErrors({
                 verificationNum: 'Invalid verification code'

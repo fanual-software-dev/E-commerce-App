@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import {Eye, EyeOffIcon,Mail,ShoppingCart} from 'lucide-react'
+import {Eye, EyeOffIcon,Mail} from 'lucide-react'
 import formSchema from '@/schemas/Form'
 import { FormSchema } from '@/schemas/Form'
 import { baseAPI } from '@/schemas/AxiosInstance'
@@ -23,7 +23,7 @@ const Login = () => {
     })
 
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(false)
+    // const [isSuccess, setIsSuccess] = useState(false)
 
     const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
@@ -58,7 +58,7 @@ const Login = () => {
             withCredentials:false
         })
         if (serverResponse.status === 200) {
-            setIsSuccess(true)
+            // setIsSuccess(true)
 
             setFormData({
                 email: '',
@@ -193,7 +193,7 @@ const Login = () => {
                 </div>
 
                 <p className='text-white justify-center text-xs flex gap-2'>
-                        Don't have an account yet?  
+                        Don&apos;t have an account yet?  
                         <Link
                             href='/signup'
                             className='underline inline-block text-accent cursor-pointer'

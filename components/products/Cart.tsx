@@ -27,7 +27,7 @@ const Cart = (props:CartItem) => {
         if(props.quantity===0){
             removeFromCart(props.id)
         }
-    },[props.quantity])
+    },[props.quantity,removeFromCart,props.id])
 
 
   return (

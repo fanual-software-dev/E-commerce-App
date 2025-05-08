@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { Heart,ShoppingCart,ChevronLeft,ChevronRight, Star } from 'lucide-react'
+import { Heart,ShoppingCart,ChevronLeft,ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Ratings from './Ratings'

@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Eye, EyeOffIcon,Mail,ShoppingCart,PhoneIcon,User } from 'lucide-react'
+import { Eye, EyeOffIcon,Mail,PhoneIcon,User } from 'lucide-react'
 import { RegisterSchema, RegisterSchemaType } from '@/schemas/Form'
 import { useRouter } from 'next/navigation'
 import { baseAPI } from '@/schemas/AxiosInstance'
@@ -29,7 +29,7 @@ const SignUp = () => {
     })
 
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(false)
+    // const [isSuccess, setIsSuccess] = useState(false)
 
     const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
@@ -72,7 +72,7 @@ const SignUp = () => {
         const serverResponse = await baseAPI.post('/api/auth/register', formData)
         
         if (serverResponse.status === 201) {
-            setIsSuccess(true)
+            // setIsSuccess(true)
             setIsSubmitting(false)
             localStorage.setItem('email', formData.email)
             setFormData({
@@ -86,7 +86,7 @@ const SignUp = () => {
             navigate.push('/verification')
         }
         else {
-            setIsSuccess(false)
+            // setIsSuccess(false)
             setIsSubmitting(false)
         }
         console.log(serverResponse.data)
