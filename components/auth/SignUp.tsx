@@ -17,7 +17,9 @@ const SignUp = () => {
         lastName: '',
         email: '',
         password: '',
-        phone: ''
+        phone: '',
+        dateOfBirth: '',
+        gender: ''
     })
 
     const [errors, setErrors] = useState<RegisterSchemaType>({
@@ -25,13 +27,15 @@ const SignUp = () => {
         lastName: '',
         email: '',
         password: '',
-        phone: ''
+        phone: '',
+        dateOfBirth: '',
+        gender: ''
     })
 
     const [isSubmitting, setIsSubmitting] = useState(false)
     // const [isSuccess, setIsSuccess] = useState(false)
 
-    const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const HandleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target
         setFormData((prev) => ({
             ...prev,
@@ -47,7 +51,9 @@ const SignUp = () => {
             lastName: '',
             email: '',
             password: '',
-            phone: ''
+            phone: '',
+            dateOfBirth: '',
+            gender: ''
         })
 
         setIsSubmitting(false)
@@ -61,7 +67,9 @@ const SignUp = () => {
                 lastName: fieldErrors.lastName ? fieldErrors.lastName[0] : '',
                 email: fieldErrors.email ? fieldErrors.email[0] : '',
                 password: fieldErrors.password ? fieldErrors.password[0] : '',
-                phone: fieldErrors.phone ? fieldErrors.phone[0] : ''
+                phone: fieldErrors.phone ? fieldErrors.phone[0] : '',
+                dateOfBirth: fieldErrors.dateOfBirth ? fieldErrors.dateOfBirth[0] : '',
+                gender: fieldErrors.gender ? fieldErrors.gender[0] : '',
             })
             setIsSubmitting(false)
             return
@@ -69,7 +77,9 @@ const SignUp = () => {
 
         setIsSubmitting(true)
 
-        const serverResponse = await baseAPI.post('/api/auth/register', formData)
+        const serverResponse = await baseAPI.post('/api/auth/register', formData,{
+            withCredentials:false
+        })
         
         if (serverResponse.status === 201) {
             // setIsSuccess(true)
@@ -80,7 +90,9 @@ const SignUp = () => {
                 lastName: '',
                 email: '',
                 password: '',
-                phone: ''
+                phone: '',
+                dateOfBirth: '',
+                gender: ''
             })
 
             navigate.push('/verification')
@@ -145,6 +157,35 @@ const SignUp = () => {
                     
                         />
                         {errors.lastName && <p className='text-amber-500 absolute -bottom-6 text-xs'>{errors.lastName}</p>}
+                    </div>
+                </div>
+
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                    <div className='relative mb-2 w-full flex items-center'>
+                        <input
+                            onChange={HandleChange}
+                            value={formData.dateOfBirth}
+                            name='dateOfBirth'
+                            className='text-black w-full bg-gray-200 outline-0 font-sans  shadow-accent rounded-lg p-3 text-xs placeholder:text-black placeholder:font-semibold placeholder:italic'
+                            type="date"
+                            
+                        />
+                        
+                        {errors.dateOfBirth && <p className='text-amber-500 absolute -bottom-6 text-xs'>{errors.dateOfBirth}</p>}
+                    </div>
+                    <div className='relative mb-2 w-full flex items-center'>
+                        <select
+                            onChange={HandleChange}
+                            value={formData.gender}
+                            name='gender'
+                            className='text-black w-full bg-gray-200 outline-0 font-sans  shadow-accent rounded-lg p-3 text-xs placeholder:text-black placeholder:font-semibold placeholder:italic'
+                        >
+                            <option value="">Select</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+
+                        {errors.gender && <p className='text-amber-500 absolute -bottom-6 text-xs'>{errors.gender}</p>}
                     </div>
                 </div>
                 
