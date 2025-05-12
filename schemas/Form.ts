@@ -1,4 +1,5 @@
-import { z } from "zod";
+import { g } from "framer-motion/client";
+import { date, z } from "zod";
 
 const formSchema = z.object({
     email: z.string().email("Invalid email address"),
@@ -12,6 +13,25 @@ export const RegisterSchema = z.object({
     email: z.string().email("Invalid email address"),
     password: z.string().min(8, "Password must be at least 8 characters long"),
     phone: z.string().min(10, "Phone number must be at least 10 digits long").regex(/^\d+$/, "Phone number must contain only digits"),
+    dateOfBirth: z.string().min(1, "Date of birth is required").refine((date) => {
+        const today = new Date();
+        const dob = new Date(date);
+        return dob < today && today.getFullYear() - dob.getFullYear() >= 18;
+    },
+
+    {
+        message: "You must be at least 18 years old"   
+    }),
+
+    gender: z.string().min(4,"gender is required").refine((gender) => {
+        const validGenders = ["Male","Female"]
+        return validGenders.includes(gender)
+    },
+
+    {
+        message:"Gender must be either Male or Female"
+    }
+)
 })
 
 export const EmailSchema = z.object({

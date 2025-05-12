@@ -6,17 +6,6 @@ import { CartItem, useCartStore } from '@/contexts/CartStore'
 
 const Cart = (props:CartItem) => {
     
-    // const [ itemQuantity, setItemQuantity ] = React.useState<number>(1)
-
-    // const handleIncrement = () => {
-    //     setItemQuantity(itemQuantity + 1) 
-    // }
-
-    // const handleDecrement = () => {
-    //     if (itemQuantity > 0) {
-    //     setItemQuantity(itemQuantity - 1)
-    //     }
-    // } 
 
     const decreaseItemQun = useCartStore((state)=>state.decreaseItemQun)
     const increaseItemQun = useCartStore((state)=>state.increaseItemQun)

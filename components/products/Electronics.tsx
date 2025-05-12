@@ -2,12 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import ProductCardSkeleton from '../skeletons/ProductCardSkeleton'
 import ProductCard from './ProductCard'
 import { ArrowUpRight } from "lucide-react";
 import { baseAPI } from '@/schemas/AxiosInstance'
 import { ProductType } from '@/utils/lib/types'
-import ProductCardSkeleton from '../skeletons/ProductCardSkeleton'
-
 
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -29,9 +28,9 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 
 
 
-const Clothes = () => {
+const Electronics = () => {
     const [priceRange,setPrinceRange] = useState<string>("10")
-    const [clothes,setClothes] = useState<ProductType[]>([])
+    const [electronics,setElectronics] = useState<ProductType[]>([])
     const [loading,setLoading] = useState<boolean>(true)
     const [productNotFound,setProductNotFound] = useState<boolean>(false)
     const [error,setError] = useState<string>("")
@@ -44,7 +43,7 @@ const Clothes = () => {
             setProductNotFound(false)
             const serverResponse = await baseAPI.get('/api/product/getProducts',{
                 params: {
-                    category: 'Clothing',
+                    category: 'Electronics',
                 },
                 withCredentials: false,
             })
@@ -55,16 +54,16 @@ const Clothes = () => {
                 if (data.length === 0) {
                     setProductNotFound(true)
                 }
-
                 console.log(data)
-                setClothes(data)
+                setElectronics(data)
                 setLoading(false)
                 setError("")
 
             } else {
+                setProductNotFound(true)
                 setLoading(false)
-                setProductNotFound(false)
                 setError("Failed to fetch products");
+                
             }
         }
 
@@ -177,7 +176,7 @@ const Clothes = () => {
         }
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {clothes.map((item:ProductType, index:number) => (
+            {electronics.map((item:ProductType, index:number) => (
                 <ProductCard
                 key={index}
                 props={item}
@@ -205,7 +204,7 @@ const Clothes = () => {
         }
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {clothes.map((item:ProductType, index:number) => (
+            {electronics.map((item:ProductType, index:number) => (
                 <ProductCard
                 key={index}
                 props={item}
@@ -233,7 +232,7 @@ const Clothes = () => {
         }
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {clothes.map((item: ProductType, index:number) => (
+            {electronics.map((item: ProductType, index:number) => (
                 <ProductCard
                 key={index}
                 props={item}
@@ -250,4 +249,5 @@ const Clothes = () => {
   )
 }
 
-export default Clothes
+export default Electronics
+

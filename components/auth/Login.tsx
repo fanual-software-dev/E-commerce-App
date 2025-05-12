@@ -7,6 +7,8 @@ import formSchema from '@/schemas/Form'
 import { FormSchema } from '@/schemas/Form'
 import { baseAPI } from '@/schemas/AxiosInstance'
 import { useRouter } from 'next/navigation'
+import { UserType, useUserStore } from '@/contexts/UserStore'
+
 
 const Login = () => {
 
@@ -16,6 +18,10 @@ const Login = () => {
         email: '',
         password: ''
     })
+
+    const setUser = useUserStore((state)=>state.setUser)
+    const setIsLoggedIn = useUserStore((state)=>state.setIsLoggedIn)
+    
 
     const [errors, setErrors] = useState<FormSchema>({
         email: '',
@@ -64,6 +70,10 @@ const Login = () => {
                 email: '',
                 password: ''
             })
+
+            setUser(serverResponse.data.user as UserType)
+            setIsLoggedIn(true)
+            
 
             navigate.push('/home')
             
