@@ -180,6 +180,7 @@ const Clothes = () => {
             {clothes.map((item:ProductType, index:number) => (
                 <ProductCard
                 key={index}
+                k={index}
                 props={item}
                 />
             ))}
@@ -208,6 +209,7 @@ const Clothes = () => {
             {clothes.map((item:ProductType, index:number) => (
                 <ProductCard
                 key={index}
+                k={index}
                 props={item}
                 />
             ))}
@@ -236,6 +238,7 @@ const Clothes = () => {
             {clothes.map((item: ProductType, index:number) => (
                 <ProductCard
                 key={index}
+                k={index}
                 props={item}
                 />
             ))}

@@ -36,6 +36,7 @@ const Profile = () => {
                             name='firstName' 
                             className='text-white text-sm outline-none w-full' 
                             value={user?.firstName || 'Not Provided'}
+                            disabled
                             onChange={(e) => console.log(e.target.value)}
                         />
                     </p>

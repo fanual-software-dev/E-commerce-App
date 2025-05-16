@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import ProductCardSkeleton from '../skeletons/ProductCardSkeleton'
 import ProductCard from './ProductCard'
 import { ArrowUpRight } from "lucide-react";
 import { baseAPI } from '@/schemas/AxiosInstance'
 import { ProductType } from '@/utils/lib/types'
+import ProductCardSkeleton from '../skeletons/ProductCardSkeleton'
+
 
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -28,9 +29,9 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 
 
 
-const Electronics = () => {
+const AllProducts = () => {
     const [priceRange,setPrinceRange] = useState<string>("10")
-    const [electronics,setElectronics] = useState<ProductType[]>([])
+    const [allProducts,setAllProducts] = useState<ProductType[]>([])
     const [loading,setLoading] = useState<boolean>(true)
     const [productNotFound,setProductNotFound] = useState<boolean>(false)
     const [error,setError] = useState<string>("")
@@ -42,9 +43,6 @@ const Electronics = () => {
             setError("")
             setProductNotFound(false)
             const serverResponse = await baseAPI.get('/api/product/getProducts',{
-                params: {
-                    category: 'Electronics',
-                },
                 withCredentials: false,
             })
             console.log(serverResponse.data,"server response")
@@ -54,16 +52,16 @@ const Electronics = () => {
                 if (data.length === 0) {
                     setProductNotFound(true)
                 }
+
                 console.log(data)
-                setElectronics(data)
+                setAllProducts(data)
                 setLoading(false)
                 setError("")
 
             } else {
-                setProductNotFound(true)
                 setLoading(false)
+                setProductNotFound(false)
                 setError("Failed to fetch products");
-                
             }
         }
 
@@ -176,7 +174,7 @@ const Electronics = () => {
         }
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {electronics.map((item:ProductType, index:number) => (
+            {allProducts.map((item:ProductType, index:number) => (
                 <ProductCard
                 key={index}
                 k={index}
@@ -205,7 +203,7 @@ const Electronics = () => {
         }
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {electronics.map((item:ProductType, index:number) => (
+            {allProducts.map((item:ProductType, index:number) => (
                 <ProductCard
                 key={index}
                 k={index}
@@ -234,7 +232,7 @@ const Electronics = () => {
         }
         
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-2'>
-            {electronics.map((item: ProductType, index:number) => (
+            {allProducts.map((item: ProductType, index:number) => (
                 <ProductCard
                 key={index}
                 k={index}
@@ -252,5 +250,4 @@ const Electronics = () => {
   )
 }
 
-export default Electronics
-
+export default AllProducts

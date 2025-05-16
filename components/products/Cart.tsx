@@ -29,7 +29,7 @@ const Cart = (props:CartItem) => {
                 width={80} 
                 height={80} 
                 alt=''
-                className='w-9/12 md:w-20 md:h-20'
+                className='w-full h-auto md:w-20 md:h-20'
             />
         </div>
         
