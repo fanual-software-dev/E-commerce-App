@@ -41,7 +41,7 @@ const Accessories = () => {
             setProductNotFound(false)
             const serverResponse = await baseAPI.get('/api/product/getProducts',{
                 params: {
-                    category: 'Accessory',
+                    category: 'Accessories',
                 },
                 withCredentials: false,
             })
@@ -180,6 +180,7 @@ const Accessories = () => {
                 {accessories.map((item:ProductType, index:number) => (
                     <ProductCard
                     key={index}
+                    k={index}
                     props={item}
                     />
                 ))}
@@ -208,6 +209,7 @@ const Accessories = () => {
                 {accessories.map((item:ProductType, index:number) => (
                     <ProductCard
                     key={index}
+                    k={index}
                     props={item}
                     />
                 ))}
@@ -236,6 +238,7 @@ const Accessories = () => {
                 {accessories.map((item:ProductType, index:number) => (
                     <ProductCard
                     key={index}
+                    k={index}
                     props={item}
                     />
                 ))}

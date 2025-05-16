@@ -1,18 +1,26 @@
 import React from 'react'
+import clsx from 'clsx';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight } from "lucide-react";
 import { ProductType } from '@/utils/lib/types';
 
 
-const ProductCard = ({props}:{props:ProductType}) => {
+const ProductCard = ({props ,k}:{props:ProductType,k:number}) => {
   return (
     <div 
-        className={`w-full p-3 border-dashed border-2  border-[#171717] border-r-0 md:${props.averageRating === 0 ? 'border-l-0' : 'border-l-0'}`}
+        className={clsx(
+            `
+            w-full p-3 border-dashed border-2 border-l-0  border-[#171717]  
+            md:${k%3 === 0 ? 'border-l-2' : 'border-l-0'}
+            lg:${k%4 === 0 ? 'border-l-2' : 'border-l-0'}
+
+            `
+        )}
     >
         <Image 
             className='w-full rounded-tl-lg rounded-tr-lg' 
-            src={props.variants[0].images[0]} 
+            src={props.variants[0].images[0]==='https://example.com/images/product1-red.jpg' ? 'https://res.cloudinary.com/dqho0rsp3/image/upload/v1734374527/farm_4_qap5bn.jpg' : props.variants[0].images[0]} 
             alt="Product Image" 
             width={300}
             height={300}
@@ -33,7 +41,7 @@ const ProductCard = ({props}:{props:ProductType}) => {
 
         </div>
 
-        {/* <p className=' px-3 py-2 text-xs text-[#B3B3B2] mt-3'>{props.subCategory}</p> */}
+        <p className='  py-2 text-xs text-[#B3B3B2] mt-3'>{props.subCategory}</p>
 
         <p className='mt-5 text-sm text-white'>{props.name}</p>
 
