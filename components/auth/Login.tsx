@@ -61,7 +61,6 @@ const Login = () => {
         }
 
         const serverResponse = await baseAPI.post('/api/auth/login', formData,{
-            withCredentials:false
         })
         if (serverResponse.status === 200) {
             // setIsSuccess(true)

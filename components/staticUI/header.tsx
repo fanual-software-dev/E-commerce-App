@@ -17,39 +17,37 @@ const Header = () => {
   const user = useUserStore(state=>state.user)
   const [visibility, setVisibility] = useState<boolean>(false)
   const currentURL = usePathname()
-
-
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   }
 
   return (
-    <div className={`w-full p-3 pb-5 md:pt-10 md:pb-5  border-dashed border-[#171717] border-b-2 flex ${user?.isAdmin && (currentURL === '/admin-dashboard/products') ? 'justify-end' : 'justify-between'}   items-center`}>
+    <div className={`w-full gap-2 sm:gap-0 px-1 py-3 sm:p-3 pb-5 md:pt-10 md:pb-5  border-dashed border-[#171717] sm:border-b-2 flex ${user?.isAdmin && (currentURL.startsWith('/admin-dashboard')) ? 'justify-end' : 'justify-between'}   items-center`}>
       
-      { !user?.isAdmin || (currentURL !== '/admin-dashboard/products') && <div className='hidden sm:flex items-center gap-4'>
+      { !user?.isAdmin || (!currentURL.startsWith('/admin-dashboard')) && <div className='hidden sm:flex items-center gap-4'>
           <Link href='/' className='border-[#171717]  bg-[#1A1A1A] border-dashed border  rounded-md text-white text-xs  px-4 py-3'>Home</Link>
           <Link href='/products' className='border-[#171717]  bg-[#1A1A1A] border-dashed  border rounded-md text-white text-xs  px-4 py-3'>Products</Link>
         </div>
       }
 
-      {!user?.isAdmin &&  <div className='flex items-center justify-center gap-2'>
+      {!user?.isAdmin || (!currentURL.startsWith('/admin-dashboard')) &&  <div className='flex items-center justify-center gap-2'>
           <Image src='/logo.png' className='hidden md:block' width={50} height={50} alt='Logo'/>
           <p className='font-bold text-2xl md:text-3xl text-white'>Sheba Market</p>
         </div>
       }
 
-      {user?.isAdmin && (currentURL === '/admin-dashboard/products') &&
-        <div className='w-3/4 flex items-center justify-center gap-2'>
-          <div className='relative flex w-3/5 items-center justify-center gap-2'>
+      {user?.isAdmin && (currentURL.startsWith('/admin-dashboard')) &&
+        <div className='w-full md:w-3/4 flex items-center justify-center gap-2'>
+          <div className='w-full relative flex md:w-3/5 items-center justify-center gap-2'>
             <input
               type="search"
               placeholder='Type to search...'
-              className='w-3/4 h-10 accent-white bg-[#1A1A1A] border-dashed border-[#171717] border rounded-md text-white text-xs  px-4 pl-10 py-3 placeholder:text-base'
+              className='w-3/4 h-6 md:h-10 accent-white bg-[#1A1A1A] border-dashed border-[#171717] borde rounded-sm md:rounded-md text-white text-xs md:text-base  px-4 pl-10 py-3 placeholder:text-xs md:placeholder:text-base'
             />
 
             <button
-              className='w-1/4 h-10 flex justify-center items-center bg-[#1A1A1A] border-dashed border-[#171717] border rounded-md text-[#a9a9a9] hover:text-white cursor-pointer  px-4 py-3 text-base'
+              className='w-1/4 h-6 md:h-10 flex justify-center items-center bg-[#1A1A1A] border-dashed border-[#171717] border rounded-sm md:rounded-md text-xs md:text-base text-[#a9a9a9] hover:text-white cursor-pointer  px-4 py-3'
             >
               Search
             </button>
@@ -77,7 +75,7 @@ const Header = () => {
         }
       </div>
 
-      <Menu onClick={toggleMenu} className='text-white sm:hidden' size={20}/>
+      <Menu onClick={toggleMenu} className='text-white sm:hidden' size={24}/>
 
      
       <div className={`bg-[#1A1A1A] absolute ${isOpen ? 'top-0':'-top-full'} w-full md:hidden  right-0 px-6 pb-6 pt-4 flex flex-col gap-3 transition-all duration-500`}>
