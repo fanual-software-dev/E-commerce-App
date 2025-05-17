@@ -20,7 +20,7 @@ export const baseAPI = axios.create({
         "Accept": "application/json",
     },
 
-    withCredentials: true,
+    withCredentials: false,
 });
 
 baseAPI.interceptors.response.use(

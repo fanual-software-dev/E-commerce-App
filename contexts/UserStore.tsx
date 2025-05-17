@@ -14,6 +14,7 @@ export type UserType = {
     dateOfBirth: string,
     gender: string,
     cart: [],
+    
 }
 
 export type UserStore = {
