@@ -1,5 +1,5 @@
 'use client'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
@@ -22,6 +22,35 @@ const Header = () => {
     setIsOpen(!isOpen);
   }
 
+  useEffect(()=>{
+    const toggler = ()=>{
+
+      const clickListener = (e: MouseEvent)=>{
+        
+        if (!e.target || ((e.target as HTMLElement).id!=="toggler" && (e.target as HTMLElement).id!=="toggler2")){
+            setVisibility(false)
+        }
+        
+      }
+
+      document.addEventListener('click',clickListener)
+
+      const scrollListener = ()=>{
+        setVisibility(false)
+        
+      }
+
+      window.addEventListener('scroll',scrollListener)
+
+      return () => {
+        window.removeEventListener('scroll',scrollListener); 
+        document.removeEventListener('click',clickListener)
+      }
+    }
+
+    toggler();
+  },[visibility])
+
   return (
     <div className={`w-full gap-2 sm:gap-0 px-1 py-3 sm:p-3 pb-5 md:pt-10 md:pb-5  border-dashed border-[#171717] sm:border-b-2 flex ${user?.isAdmin && (currentURL.startsWith('/admin-dashboard')) ? 'justify-end' : 'justify-between'}   items-center`}>
       
@@ -43,7 +72,7 @@ const Header = () => {
             <input
               type="search"
               placeholder='Type to search...'
-              className='w-3/4 h-6 md:h-10 accent-white bg-[#1A1A1A] border-dashed border-[#171717] borde rounded-sm md:rounded-md text-white text-xs md:text-base  px-4 pl-10 py-3 placeholder:text-xs md:placeholder:text-base'
+              className='w-3/4 h-6 md:h-10 accent-white bg-[#1A1A1A] border-dashed border-[#171717] border rounded-sm md:rounded-md text-white text-xs md:text-base  px-4 pl-10 py-3 placeholder:text-xs md:placeholder:text-base'
             />
 
             <button
@@ -66,7 +95,7 @@ const Header = () => {
         </Link>
 
         {!user && <Link href='/' className='bg-[#1A1A1A] hover:bg-[#272727] transition-all duration-300 text-white   px-6 py-3 font-bold text-xs rounded-md'>Signup/Login</Link>}
-        {user && <span onClick={()=>setVisibility(!visibility)} className='cursor-pointer bg-[#1A1A1A] hover:bg-[#272727] transition-all duration-300 text-white   px-6 py-3 font-bold text-xs rounded-md'>{user.firstName + " " + user.lastName[0] + '.'}</span>}
+        {user && <span id='toggler' onClick={()=>setVisibility(!visibility)} className='cursor-pointer bg-[#1A1A1A] hover:bg-[#272727] transition-all duration-300 text-white   px-6 py-3 font-bold text-xs rounded-md'>{user.firstName + " " + user.lastName[0] + '.'}</span>}
         {visibility && 
           <div className='absolute hidden md:block top-3 right-0'>
             <ProfileDropdown/>
@@ -75,7 +104,7 @@ const Header = () => {
         }
       </div>
 
-      <Menu onClick={toggleMenu} className='text-white sm:hidden' size={24}/>
+      <Menu  onClick={toggleMenu} className='text-white cursor-pointer sm:hidden' size={24}/>
 
      
       <div className={`bg-[#1A1A1A] absolute ${isOpen ? 'top-0':'-top-full'} w-full md:hidden  right-0 px-6 pb-6 pt-4 flex flex-col gap-3 transition-all duration-500`}>
@@ -98,7 +127,7 @@ const Header = () => {
             </span>
         </Link>
 
-        {user && <span onClick={()=>setVisibility(!visibility)} className='cursor-pointer bg-[#303030] hover:bg-[#272727] transition-all duration-300 text-white w-1/2 overflow-ellipsis px-5 py-2 font-bold text-xs rounded-lg'>{user.firstName}</span>}
+        {user && <span id='toggler2' onClick={()=>setVisibility(!visibility)} className='cursor-pointer bg-[#303030] hover:bg-[#272727] transition-all duration-300 text-white w-1/2 overflow-ellipsis px-5 py-2 font-bold text-xs rounded-lg'>{user.firstName}</span>}
         {visibility && 
           <div className='absolute z-50  md:hidden top-3 right-0'>
             <ProfileDropdown/>
