@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const ProductCard = ({product}:{product:ProductType}) => {
   return (
-    <div draggable className={`transition-all duration-300 border-[#373737] border bg-[#101010] shadow-[#303030] p-3 flex flex-col md:p-0 shadow-xs rounded-xl mt-5 gap-3  md:gap-5  md:grid md:grid-cols-5`}>
+    <div draggable className={`transition-all duration-300 border-[#373737] border bg-[#101010] shadow-[#303030] p-3 flex flex-col md:p-0 shadow-xs rounded-xl mt-5 gap-3  md:gap-5  md:grid md:grid-cols-6`}>
         
         <div className='flex justify-center md:justify-start md:p-2 items-center'>
             <Image
@@ -13,7 +13,7 @@ const ProductCard = ({product}:{product:ProductType}) => {
                 width={80} 
                 height={80} 
                 alt=''
-                className='w-full h-auto sm:w-1/2 md:w-20 md:h-20'
+                className='w-full rounded-md h-auto sm:w-1/2 md:w-20 md:h-20'
             />
         </div>
         
@@ -27,18 +27,23 @@ const ProductCard = ({product}:{product:ProductType}) => {
             <p className='text-white text-xs'>Birr {product.variants[0].price}</p>
         </div>
 
-        <div className='flex justify-start gap-1 items-center border-[#373737] border-r'>
+        <div className='flex justify-start gap-1 items-center'>
             <span className='inline-block md:hidden text-xs text-white'>Category:</span>
             <p className='text-white text-xs'>{product.category}</p>
+        </div>
+
+        <div className='flex justify-start gap-1 items-center border-[#373737] border-r'>
+            <span className='inline-block md:hidden text-xs text-white'>Total Stock:</span>
+            <p className='text-white text-xs'>{product.totalStock}</p>
         </div>
         
         <div className='flex justify-between gap-5 pr-3 items-center'>
             
-            <button className='text-center text-xs bg-amber-500 hover:bg-amber-400 cursor-pointer md:shadow-[#303030] shadow-md  text-white rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
+            <button className='text-center text-xs  hover:bg-amber-400 text-amber-400 cursor-pointer md:shadow-[#303030] shadow-md  hover:text-white rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
                 Edit
             </button>
 
-            <button className='text-center text-xs  bg-red-600 hover:bg-red-500 cursor-pointer md:shadow-[#303030] shadow-md  text-white rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
+            <button className='text-center text-xs   hover:bg-red-500 text-red-500 cursor-pointer md:shadow-[#303030] shadow-md  hover:text-white rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
                 Delete
             </button>
         </div>

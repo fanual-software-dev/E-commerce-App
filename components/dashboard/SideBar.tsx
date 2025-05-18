@@ -1,25 +1,49 @@
-import React, { useState } from 'react'
+'use client'
+import React, { useState,useEffect } from 'react'
 import Link from 'next/link'
 import {
-  
-  
   User,       // for Profile
   ShoppingCart, // or Package for Orders
   BarChart,
   Tag,
   PackageMinus,
-  Layout,
   LayoutTemplate,
   Ticket,
-  ArrowBigRightDash,
-  ArrowBigRightIcon,
-  ArrowRight,
   ArrowRightCircle,
   ArrowLeftCircle
 } from 'lucide-react';
 
 const SideBar = () => {
     const [openSideBar,setOpenSideBar] = useState<boolean>(false)
+
+    useEffect(()=>{
+        const toggler = ()=>{
+
+            // const clickListener = (e: MouseEvent)=>{
+            //     if (!e.target || (e.target as HTMLElement).id!=="sideBarOpener"){
+                    
+            //         setOpenSideBar(false)
+            //     }
+            
+            // }
+
+            // document.addEventListener('click',clickListener)
+
+            const scrollListener = ()=>{
+                setOpenSideBar(false)
+            
+            }
+
+            window.addEventListener('scroll',scrollListener)
+
+            return () => {
+                window.removeEventListener('scroll',scrollListener); 
+                // document.removeEventListener('click',clickListener)
+            }
+        }
+
+        toggler();
+    },[openSideBar])
 
   return (
     <div>
@@ -57,7 +81,7 @@ const SideBar = () => {
         
         </div>
 
-        <span onClick={()=>setOpenSideBar(!openSideBar)} className={`xl:hidden p-0.5 rounded-full bg-sky-400 fixed cursor-pointer z-50 bottom-15 left-1 sm:left-3`}>
+        <span id='sideBarOpener' onClick={()=>setOpenSideBar(!openSideBar)} className={`xl:hidden p-0.5 rounded-full bg-sky-400 fixed cursor-pointer z-50 bottom-15 left-1 sm:left-3`}>
             {openSideBar ? <ArrowLeftCircle className='text-white'/> : <ArrowRightCircle className='text-white' size={24}/>}
         </span>
     </div>
