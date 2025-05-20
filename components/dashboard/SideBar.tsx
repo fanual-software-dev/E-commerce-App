@@ -81,7 +81,7 @@ const SideBar = () => {
         
         </div>
 
-        <span id='sideBarOpener' onClick={()=>setOpenSideBar(!openSideBar)} className={`xl:hidden p-0.5 rounded-full bg-sky-400 fixed cursor-pointer z-50 bottom-15 left-1 sm:left-3`}>
+        <span id='sideBarOpener' onClick={()=>setOpenSideBar(!openSideBar)} className={`xl:hidden p-0.5 rounded-full bg-sky-400 fixed cursor-pointer z-50 md:bottom-15 left-1 sm:left-3`}>
             {openSideBar ? <ArrowLeftCircle className='text-white'/> : <ArrowRightCircle className='text-white' size={24}/>}
         </span>
     </div>

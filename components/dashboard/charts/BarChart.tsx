@@ -23,7 +23,7 @@ const data = {
     {
       label: "Sales",
       data: [900, 500, 750, 300],
-      backgroundColor: "rgba(20, 20, 20)", // Tailwind blue-500
+      backgroundColor: "rgba(26 26, 26)", // Tailwind blue-500
     },
   ],
 };
