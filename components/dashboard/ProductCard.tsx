@@ -12,7 +12,7 @@ const ProductCard = ({product}:{product:ProductType}) => {
                 sizes='(max-width: 768px) 100vw' 
                 width={80} 
                 height={80} 
-                alt=''
+                alt='Product Image'
                 className='w-full rounded-md h-auto sm:w-1/2 md:w-20 md:h-20'
             />
         </div>
@@ -39,11 +39,11 @@ const ProductCard = ({product}:{product:ProductType}) => {
         
         <div className='flex justify-between gap-5 pr-3 items-center'>
             
-            <button className='text-center text-xs  hover:bg-amber-400 text-amber-400 cursor-pointer md:shadow-[#303030] shadow-md  hover:text-white rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
+            <button className='text-center text-xs  bg-[#121212] hover:bg-[#1A1A1A]  text-amber-400 cursor-pointer md:shadow-[#303030] shadow-md  rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
                 Edit
             </button>
 
-            <button className='text-center text-xs   hover:bg-red-500 text-red-500 cursor-pointer md:shadow-[#303030] shadow-md  hover:text-white rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
+            <button className='text-center text-xs   bg-[#121212] hover:bg-[#1A1A1A]  text-red-500 cursor-pointer md:shadow-[#303030] shadow-md  rounded-md w-1/3 md:w-10/12 p-1   md:p-2 '>
                 Delete
             </button>
         </div>

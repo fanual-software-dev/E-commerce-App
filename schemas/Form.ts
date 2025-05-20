@@ -1,5 +1,4 @@
-import { g } from "framer-motion/client";
-import { date, z } from "zod";
+import { z } from "zod";
 
 const formSchema = z.object({
     email: z.string().email("Invalid email address"),

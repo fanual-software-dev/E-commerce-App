@@ -54,15 +54,15 @@ const ProductManagement = () => {
 
           document.addEventListener('click',clickListener)
 
-          const scrollListener = ()=>{
-            setAddOpen(false)
+          // const scrollListener = ()=>{
+          //   setAddOpen(false)
             
-          }
+          // }
 
-          window.addEventListener('scroll',scrollListener)
+          // window.addEventListener('scroll',scrollListener)
 
           return () => {
-            window.removeEventListener('scroll',scrollListener); 
+            // window.removeEventListener('scroll',scrollListener); 
             document.removeEventListener('click',clickListener)
           }
         }
@@ -113,7 +113,7 @@ const ProductManagement = () => {
     },[paginationNumber])
 
   return (
-    <div className='text-white py-8 px-2 lg:pl-24'>
+    <div className='text-white py-8 px-2 xl:pl-24'>
       <p>Welcome Back {user?.firstName!},</p>
 
       <div className='mt-5 flex flex-col gap-5'>
@@ -129,14 +129,14 @@ const ProductManagement = () => {
         </div>
 
         <div className='flex justify-end mt-5'>
-          <button id='opener' onClick={()=>setAddOpen(!addOpen)} className='flex justify-center gap-1 items-center w-28 text-base hover:bg-green-500 cursor-pointer bg-[#1a1a1a] text-green-600 md:shadow-[#303030] shadow-md  hover:text-black rounded-md p-1 '>
+          <button id='opener' onClick={()=>setAddOpen(!addOpen)} className='flex justify-center gap-1 items-center w-28 text-base bg-[#121212] hover:bg-[#1A1A1A] cursor-pointer text-green-500 md:shadow-[#303030] shadow-md rounded-md p-1 '>
               Add
           </button>
         </div>
         
         
-        <div id='form-container' className={`w-full   md:w-3/5 xl:w-1/3 absolute ${addOpen ? 'md:right-5' : '-right-full'} top-25 z-50  transition-all duration-500`}>
-          <X  onClick={()=>setAddOpen(!addOpen)} className='absolute cursor-pointer right-5 top-5' size={20}/>
+        <div id='form-container' className={`w-full md:py-4 h-screen  md:w-3/5 xl:w-1/3 fixed overflow-y-scroll ${addOpen ? 'block' : 'hidden'} right-0 top-0 z-50  transition-all duration-500`}>
+          <X  onClick={()=>setAddOpen(!addOpen)} className='absolute cursor-pointer right-5 top-10' size={20}/>
           <AddProduct/>
         </div>
 
