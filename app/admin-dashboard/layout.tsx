@@ -1,18 +1,14 @@
-'use client'
-import SideBar from '@/components/dashboard/SideBar'
-import { useUserStore } from '@/contexts/UserStore'
-import React from 'react'
+"use client";
+import SideBar from "@/components/dashboard/SideBar";
+import React from "react";
 
-const layout = ({children}:{children: React.ReactNode}) => {
-
-    const user= useUserStore(state=>state.user)
-
+const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='w-full min-h-screen'>
-        {user?.isAdmin && <SideBar/>}
-        {children}
+    <div className="w-full min-h-screen">
+      {<SideBar />}
+      {children}
     </div>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;
