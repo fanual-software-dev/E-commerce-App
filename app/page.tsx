@@ -1,10 +1,5 @@
-
-import Login from "@/components/auth/Login";
-
-
+import LandingPage from "@/components/staticUI/landingPage";
 
 export default function App() {
-  return (
-    <Login/>
-  );
+  return <LandingPage />;
 }
