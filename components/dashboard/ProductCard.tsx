@@ -8,7 +8,6 @@ const ProductCard = ({ product }: { product: ProductType }) => {
   const navigate = useRouter();
   return (
     <div
-      draggable
       onClick={() => navigate.push(`/products/${product._id}`)}
       className={`transition-all duration-300 border-[#373737] border bg-[#101010] shadow-[#303030] p-3 flex flex-col md:p-0 shadow-xs rounded-xl mt-5 gap-3  md:gap-5  md:grid md:grid-cols-6`}
     >

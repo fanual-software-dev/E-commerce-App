@@ -103,12 +103,12 @@ const SideBar = () => {
       <span
         id="sideBarOpener"
         onClick={() => setOpenSideBar(!openSideBar)}
-        className={`xl:hidden p-0.5 rounded-full bg-sky-400 fixed cursor-pointer z-50 md:bottom-15 left-1 sm:left-3`}
+        className={`xl:hidden p-0.5 rounded-full bg-[#000000] fixed cursor-pointer z-50 md:bottom-15 left-1 sm:left-3`}
       >
         {openSideBar ? (
-          <ArrowLeftCircle className="text-white" />
+          <ArrowLeftCircle className="text-[#797979]" />
         ) : (
-          <ArrowRightCircle className="text-white" size={24} />
+          <ArrowRightCircle className="text-[#797979]" size={24} />
         )}
       </span>
     </div>

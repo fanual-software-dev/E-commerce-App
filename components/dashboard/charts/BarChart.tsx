@@ -1,61 +1,124 @@
-// components/BarChart.tsx
-"use client"; // Important if using App Router
+"use client";
 
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  YAxis,
   Tooltip,
-  Legend,
-} from "chart.js";
+  ResponsiveContainer,
+} from "recharts";
+import { Card, CardContent } from "@/components/ui/card";
 
-import { Bar } from "react-chartjs-2";
+const salesData = [
+  { month: "Jan", sales: 4000, orders: 240 },
+  { month: "Feb", sales: 3000, orders: 221 },
+  { month: "Mar", sales: 5000, orders: 229 },
+  { month: "Apr", sales: 4780, orders: 200 },
+  { month: "May", sales: 5890, orders: 218 },
+  { month: "Jun", sales: 4390, orders: 250 },
+  { month: "Jul", sales: 5490, orders: 270 },
+];
 
-// Register chart components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+const pieData = [
+  { name: "Electronics", value: 400 },
+  { name: "Clothing", value: 300 },
+  { name: "Accessories", value: 300 },
+  // { name: 'Furniture', value: 200 }
+];
 
-// Data and options
-const data = {
-  labels: ["Accessories", "Clothes", "Electronics", "Jeweleries",],
-  datasets: [
-    {
-      label: "Sales",
-      data: [900, 500, 750, 300],
-      backgroundColor: "rgba(26 26, 26)", // Tailwind blue-500
-    },
-  ],
-};
+const COLORS = ["#07f5bd", "#f5f507", "#0993e8", "#f50559"];
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: { position: "top" as const },
-    title: {
-      display: true,
-      text: "Monthly Sales Report",
-    },
-  },
-  scales: {
-    x: {
-      title: {
-        display: true,
-        text: "Products",
-      },
-    },
-    y: {
-      title: {
-        display: true,
-        text: "Units (in 1000s)",
-      },
-      ticks: {
-        callback: (value: any) => `${value/100}k`,
-      },
-    },
-  },
-};
+export default function Dashboard() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-6 md:p-4">
+      {/* Sales Bar Chart */}
+      <Card className="rounded-2xl shadow-md w-full p-2">
+        <CardContent>
+          <h2 className="text-lg font-semibold mb-4">Monthly Sales</h2>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={salesData}>
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="sales" fill="#4f46e5" radius={[6, 6, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
 
-export default function BarChart() {
-  return <Bar data={data} options={options} />;
+      {/* Orders Line Chart */}
+      <Card className="rounded-2xl w-full shadow-md p-2">
+        <CardContent>
+          <h2 className="text-lg font-semibold mb-4">Monthly Orders</h2>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={salesData}>
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="orders"
+                stroke="#16a34a"
+                strokeWidth={2}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Category Pie Chart */}
+      <Card className="rounded-2xl w-full shadow-md p-2">
+        <CardContent>
+          <h2 className="text-lg font-semibold mb-4">Sales by Category</h2>
+          <ResponsiveContainer width="100%" height={200}>
+            <PieChart>
+              <Pie
+                data={pieData}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                label
+              >
+                {pieData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Profit Line Chart */}
+      <Card className="rounded-2xl w-full shadow-md p-2">
+        <CardContent>
+          <h2 className="text-lg font-semibold mb-4">Estimated Profits</h2>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={salesData}>
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="sales"
+                stroke="#f59e0b"
+                strokeDasharray="5 5"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }

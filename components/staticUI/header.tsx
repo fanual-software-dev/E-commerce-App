@@ -54,39 +54,37 @@ const Header = () => {
     <div
       className={`w-full gap-2 sm:gap-0 px-1 py-3 sm:p-3 pb-5 md:pt-10 md:pb-5  border-dashed border-[#171717] sm:border-b-2 flex ${user?.isAdmin && currentURL.startsWith("/admin-dashboard") ? "justify-end" : "justify-between"}   items-center`}
     >
-      {!user?.isAdmin ||
-        (!currentURL.startsWith("/admin-dashboard") && (
-          <div className="hidden sm:flex items-center gap-4">
-            <Link
-              href="/"
-              className="border-[#171717]  bg-[#1A1A1A] border-dashed border  rounded-md text-white text-xs  px-4 py-3"
-            >
-              Home
-            </Link>
-            <Link
-              href="/products"
-              className="border-[#171717]  bg-[#1A1A1A] border-dashed  border rounded-md text-white text-xs  px-4 py-3"
-            >
-              Products
-            </Link>
-          </div>
-        ))}
+      {!user?.isAdmin && (
+        <div className="hidden sm:flex items-center gap-4">
+          <Link
+            href="/home"
+            className="border-[#171717]  bg-[#1A1A1A] border-dashed border  rounded-md text-white text-xs  px-4 py-3"
+          >
+            Home
+          </Link>
+          <Link
+            href="/products"
+            className="border-[#171717]  bg-[#1A1A1A] border-dashed  border rounded-md text-white text-xs  px-4 py-3"
+          >
+            Products
+          </Link>
+        </div>
+      )}
 
-      {!user?.isAdmin ||
-        (!currentURL.startsWith("/admin-dashboard") && (
-          <div className="flex items-center justify-center gap-2">
-            <Image
-              src="/logo.png"
-              className="hidden md:block"
-              width={50}
-              height={50}
-              alt="Logo"
-            />
-            <p className="font-bold text-2xl md:text-3xl text-white">
-              Sheba Market
-            </p>
-          </div>
-        ))}
+      {!user?.isAdmin && (
+        <div className="flex items-center justify-center gap-2">
+          <Image
+            src="/logo.png"
+            className="hidden md:block"
+            width={50}
+            height={50}
+            alt="Logo"
+          />
+          <p className="font-bold text-2xl md:text-3xl text-white">
+            Sheba Market
+          </p>
+        </div>
+      )}
 
       {user?.isAdmin && currentURL.startsWith("/admin-dashboard") && (
         <div className="w-full md:w-3/4 flex items-center justify-center gap-2">
@@ -168,7 +166,7 @@ const Header = () => {
         )}
 
         <Link
-          href="/"
+          href="/home"
           className="w-1/2 flex items-center gap-1 bg-[#303030]  transition-all duration-300 border-dashed  border-gray-500 rounded-lg text-white text-xs  px-5 py-2"
         >
           Home
