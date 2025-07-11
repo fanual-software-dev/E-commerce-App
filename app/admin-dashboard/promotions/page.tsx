@@ -1,11 +1,8 @@
-import React from 'react'
+import PromotionsManagement from "@/components/dashboard/PromotionsManagement";
+import React from "react";
 
 const PromotionsManagementPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <PromotionsManagement />;
+};
 
-export default PromotionsManagementPage
+export default PromotionsManagementPage;

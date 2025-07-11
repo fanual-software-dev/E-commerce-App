@@ -1,11 +1,8 @@
-import React from 'react'
+import SupportManagement from "@/components/dashboard/SupportManagement";
+import React from "react";
 
 const SupportManagementPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <SupportManagement />;
+};
 
-export default SupportManagementPage
+export default SupportManagementPage;

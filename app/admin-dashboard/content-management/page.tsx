@@ -1,11 +1,8 @@
-import React from 'react'
+import ContentManagement from "@/components/dashboard/ContentManagement";
+import React from "react";
 
 const ContentManagementPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <ContentManagement />;
+};
 
-export default ContentManagementPage
+export default ContentManagementPage;
